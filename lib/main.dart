@@ -35,31 +35,29 @@ class _MyHomePageState extends State<MyHomePage> {
     Size deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
-        child: Stack(
-          children: <Widget>[
-            Container(
-              height: deviceSize.height,
-              width: deviceSize.width,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                    Colors.orange[900],
-                    Colors.orange[800],
-                  ],
-                ),
+        child: SingleChildScrollView(
+          child: Container(
+            height: deviceSize.height,
+            width: deviceSize.width,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [
+                  Colors.orange[900],
+                  Colors.orange[800],
+                ],
               ),
             ),
-            Column(
-              children: [
+            child: Column(
+              children: <Widget>[
                 SizedBox(
-                  height: 100,
+                  height: 80,
                 ),
                 Row(
                   children: [
                     SizedBox(
-                      width: 30,
+                      width: 10,
                     ),
                     Text(
                       "Login",
@@ -71,13 +69,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 10,
-                ),
                 Row(
                   children: [
                     SizedBox(
-                      width: 30,
+                      width: 10,
+                      height: 50,
                     ),
                     Text(
                       "Welcome Back",
@@ -89,26 +85,126 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ],
                 ),
-              ],
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: const Radius.circular(60.0),
-                    topRight: const Radius.circular(60.0),
+                SizedBox(
+                  height: 27,
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: const Radius.circular(60.0),
+                        topRight: const Radius.circular(60.0),
+                      ),
+                    ),
+                    height: 474,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 60,
+                        ),
+                        Container(
+                          width: deviceSize.width * 0.75,
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                Icons.person,
+                                color: Color(0xffe65100),
+                              ),
+                              hintText: 'Email or Phone number',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                            ),
+                            keyboardType: TextInputType.emailAddress,
+                          ),
+                        ),
+                        Container(
+                          width: deviceSize.width * 0.75,
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                Icons.https,
+                                color: Color(0xffe65100),
+                              ),
+                              hintText: 'Password',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                            ),
+                            obscureText: true,
+                          ),
+                        ),
+                        SizedBox(height: 30,),
+                        Text(
+                          'Forgot Password?',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Color(0xffcbcbcb),
+                          ),
+                        ),
+                        SizedBox(height: 35,),
+                        FlatButton(
+                          padding: EdgeInsets.all(16.0),
+                          color: Color(0xffe65100),
+                          child: Text(
+                            'Login',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontFamily: 'Arial',
+                            ),
+                          ),
+                          onPressed: () {},
+                        ),
+                        SizedBox(height: 35,),
+                        Text(
+                          'Continue will social media',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Color(0xffcbcbcb),
+                          ),
+                        ),
+                        SizedBox(height: 20,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            FlatButton(
+                              padding: EdgeInsets.all(16.0),
+                              color: Color(0xff2196f3),
+                              child: Text(
+                                'Facebook',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontFamily: 'Arial',
+                                ),
+                              ),
+                              onPressed: () {},
+                            ),
+                            FlatButton(
+                              padding: EdgeInsets.all(16.0),
+                              color: Color(0xff000000),
+                              child: Text(
+                                'Github',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontFamily: 'Arial',
+                                ),
+                              ),
+                              onPressed: () {},
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
-                height: 440,
-//                child: TextField(
-//                  decoration: InputDecoration(
-//                      hintText: 'Email or Phone number'),
-//                ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
