@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Login Page',
       theme: ThemeData(
         primarySwatch: Colors.orange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -30,6 +30,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool _obscureText = true;
+
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
@@ -52,12 +54,12 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: 80,
+                  height: deviceSize.height/10,
                 ),
                 Row(
                   children: [
                     SizedBox(
-                      width: 10,
+                      width: deviceSize.width/20,
                     ),
                     Text(
                       "Login",
@@ -72,8 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   children: [
                     SizedBox(
-                      width: 10,
-                      height: 50,
+                      width: deviceSize.width/20,
+                      height: deviceSize.height/20,
                     ),
                     Text(
                       "Welcome Back",
@@ -86,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
                 SizedBox(
-                  height: 27,
+                  height: deviceSize.height/30,
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,
@@ -98,103 +100,155 @@ class _MyHomePageState extends State<MyHomePage> {
                         topRight: const Radius.circular(60.0),
                       ),
                     ),
-                    height: 474,
+                    height: deviceSize.height * 0.74,
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: 60,
+                          height: deviceSize.height/10,
                         ),
                         Container(
                           width: deviceSize.width * 0.75,
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.person,
-                                color: Color(0xffe65100),
+                          height: deviceSize.height * 0.08,
+                          child: Material(
+                            elevation: 10.0,
+                            shadowColor: Color(0xffee8e2e),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.person,
+                                  color: Color(0xffe65100),
+                                ),
+                                hintText: 'Email or Phone number',
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.grey,
+                                    width: 0.05,
+                                  ),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(5.0),
+                                    topRight: Radius.circular(5.0),
+                                  ),
+                                ),
                               ),
-                              hintText: 'Email or Phone number',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                              ),
+                              keyboardType: TextInputType.emailAddress,
                             ),
-                            keyboardType: TextInputType.emailAddress,
                           ),
                         ),
                         Container(
                           width: deviceSize.width * 0.75,
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.https,
-                                color: Color(0xffe65100),
-                              ),
-                              hintText: 'Password',
+                          height: deviceSize.height * 0.08,
+                          child: Material(
+                            elevation: 10.0,
+                            shadowColor: Color(0xffee8e2e),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.https,
+                                  color: Color(0xffe65100),
+                                ),
+                                hintText: 'Password',
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
+                                borderSide: BorderSide(
+                                  color: Colors.grey,
+                                  width: 0.05,
+                                ),
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(5.0),
+                                  bottomRight: Radius.circular(5.0),
+                                ),
                               ),
+                              ),
+                              obscureText: _obscureText,
                             ),
-                            obscureText: true,
                           ),
                         ),
-                        SizedBox(height: 30,),
+                        SizedBox(
+                          height: deviceSize.height/20,
+                        ),
                         Text(
                           'Forgot Password?',
                           style: TextStyle(
                             fontSize: 16,
-                            color: Color(0xffcbcbcb),
+//                            color: Color(0xffcbcbcb),
+                          color: Colors.grey,
                           ),
                         ),
-                        SizedBox(height: 35,),
-                        FlatButton(
-                          padding: EdgeInsets.all(16.0),
-                          color: Color(0xffe65100),
-                          child: Text(
-                            'Login',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontFamily: 'Arial',
+                        SizedBox(
+                          height: deviceSize.height/15,
+                        ),
+                        SizedBox(
+                          width: deviceSize.width/2,
+                          child: FlatButton(
+                            padding: EdgeInsets.all(16.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40.0),
                             ),
+                            color: Color(0xffe65100),
+                            child: Text(
+                              'Login',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontFamily: 'Arial',
+                              ),
+                            ),
+                            onPressed: () {},
                           ),
-                          onPressed: () {},
                         ),
-                        SizedBox(height: 35,),
+                        SizedBox(
+                          height: deviceSize.height/15,
+                        ),
                         Text(
                           'Continue will social media',
                           style: TextStyle(
                             fontSize: 16,
-                            color: Color(0xffcbcbcb),
+//                            color: Color(0xffcbcbcb),
+                            color: Colors.grey,
                           ),
                         ),
-                        SizedBox(height: 20,),
+                        SizedBox(
+                          height: deviceSize.height/30,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
-                            FlatButton(
-                              padding: EdgeInsets.all(16.0),
-                              color: Color(0xff2196f3),
-                              child: Text(
-                                'Facebook',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontFamily: 'Arial',
+                            SizedBox(
+                              width: deviceSize.width * 0.4,
+                              child: FlatButton(
+                                padding: EdgeInsets.all(16.0),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(40.0),
                                 ),
+                                color: Color(0xff2196f3),
+                                child: Text(
+                                  'Facebook',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontFamily: 'Arial',
+                                  ),
+                                ),
+                                onPressed: () {},
                               ),
-                              onPressed: () {},
                             ),
-                            FlatButton(
-                              padding: EdgeInsets.all(16.0),
-                              color: Color(0xff000000),
-                              child: Text(
-                                'Github',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontFamily: 'Arial',
+                            SizedBox(
+                              width: deviceSize.width * 0.4,
+                              child: FlatButton(
+                                padding: EdgeInsets.all(16.0),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(40.0),
                                 ),
+                                color: Color(0xff000000),
+                                child: Text(
+                                  'Github',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontFamily: 'Arial',
+                                  ),
+                                ),
+                                onPressed: () {},
                               ),
-                              onPressed: () {},
                             ),
                           ],
                         )
@@ -206,7 +260,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
